@@ -21,10 +21,24 @@
     }
   ],
   "bandDescription": "Wir sind Interceptor",
+  "members": [
+    {
+      "name": "Max Mustermann",
+      "role": "Sänger & Gitarrist",
+      "image": "images/stockbild.png",
+      "bio": "Max ist das Herz der Band. Seit 2018 mit dabei und bekannt für seine energiegeladene Bühnenpräsenz."
+    },
+    {
+      "name": "Lisa Musterfrau",
+      "role": "Schlagzeugerin",
+      "image": "images/stockbild.png",
+      "bio": "Lisa bringt den Beat. Ihre Leidenschaft für Rhythmus treibt unsere Songs nach vorne."
+    }
+  ],
   "media": {
     "images": [
       {
-        "src": "images/image1.jpg",
+        "src": "images/stockbild.png",
         "alt": "Konzert 1"
       },
       {

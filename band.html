@@ -4,6 +4,22 @@
     <meta charset="UTF-8" />
     <title>Interceptor - Über uns</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .band-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      .band-member {
+        max-width: 300px;
+      }
+      .band-image {
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -24,6 +40,10 @@
       <div id="band-content">
         <h2 id="band-title"></h2>
         <div id="band-text"></div>
+        <section id="band-members">
+          <h3>Bandmitglieder</h3>
+          <div id="members-list" class="band-grid"></div>
+        </section>
       </div>
     </main>
 
@@ -33,20 +53,41 @@
 
     <script>
       // Funktion zum Laden der JSON-Datei
-      fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
+      fetch("data.json")
+        .then((response) => response.json())
+        .then((data) => {
           // Header-Titel dynamisch setzen
-          document.getElementById('header-title').textContent = data.bandName;
+          document.getElementById("header-title").textContent = data.bandName;
 
           // Bandinformationen dynamisch setzen
-          document.getElementById('band-title').textContent = `Über ${data.bandName}`;
-          document.getElementById('band-text').textContent = data.bandDescription;
+          document.getElementById(
+            "band-title"
+          ).textContent = `Über ${data.bandName}`;
+          document.getElementById("band-text").textContent =
+            data.bandDescription;
+
+          // Mitglieder dynamisch einfügen
+          const membersList = document.getElementById("members-list");
+          data.members.forEach((member) => {
+            const memberDiv = document.createElement("div");
+            memberDiv.className = "band-member";
+            memberDiv.innerHTML = `
+              <img src="${member.image}" alt="${member.name}" class="band-image" />
+              <h4>${member.name}</h4>
+              <p><em>${member.role}</em></p>
+              <p>${member.bio}</p>
+            `;
+            membersList.appendChild(memberDiv);
+          });
 
           // Footer dynamisch setzen
-          document.getElementById('footer-text').innerHTML = `&copy; ${data.footer.copyright} | <a href="${data.footer.impressumLink}">Impressum</a>`;
+          document.getElementById(
+            "footer-text"
+          ).innerHTML = `&copy; ${data.footer.copyright} | <a href="${data.footer.impressumLink}">Impressum</a>`;
         })
-        .catch(error => console.error('Fehler beim Laden der JSON-Datei:', error));
+        .catch((error) =>
+          console.error("Fehler beim Laden der JSON-Datei:", error)
+        );
     </script>
   </body>
 </html>
