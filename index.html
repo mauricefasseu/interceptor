@@ -5,12 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interceptor - Startseite</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      .hamburger-menu {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-left: auto;
+      }
+
+      .hamburger-menu .bar {
+        width: 30px;
+        height: 4px;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+
+      /* Navigation Style */
+      .nav-bar ul {
+        display: flex;
+        gap: 20px;
+        list-style-type: none;
+        margin: 0;
+      }
+
+      /* Mobile navigation */
+      @media (max-width: 768px) {
+        .nav-bar ul {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          padding: 20px;
+          background-color: #222;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          right: 0;
+          z-index: 10;
+        }
+
+        .nav-bar ul li a {
+          padding: 15px;
+          text-align: center;
+          width: 100%;
+        }
+
+        .hamburger-menu {
+          display: flex;
+        }
+
+        .nav-bar.active ul {
+          display: flex;
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
       <div class="container">
-        <h1 id="band-name"></h1>
-        <nav>
+        <div class="header-top">
+          <h1 id="band-name"></h1>
+          <div class="social-links">
+            <a
+              href="https://instagram.com/deinprofil"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://youtube.com/deinprofil"
+              target="_blank"
+              aria-label="YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a
+              href="https://facebook.com/deinprofil"
+              target="_blank"
+              aria-label="Facebook"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+          <!-- Hamburger Menu -->
+          <div class="hamburger-menu" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+        <nav class="nav-bar">
           <ul>
             <li><a href="index.html">Startseite</a></li>
             <li><a href="events.html">Events</a></li>
@@ -43,6 +132,11 @@
     </footer>
 
     <script>
+      function toggleMenu() {
+        const nav = document.querySelector(".nav-bar");
+        nav.classList.toggle("active");
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         fetch("data.json")
           .then((response) => {
@@ -59,14 +153,6 @@
             document.getElementById(
               "about-text"
             ).textContent = `Wir sind eine leidenschaftliche Band aus ${data.city}. Unsere Musik vereint ${data.genre} und ${data.specialFeatures}.`;
-
-            // Events dynamisch auflisten
-            const eventsList = document.getElementById("events-list");
-            data.events.forEach((event) => {
-              const li = document.createElement("li");
-              li.innerHTML = `<strong>${event.title}</strong><br>${event.date}<br>${event.location}`;
-              eventsList.appendChild(li);
-            });
 
             // Footer dynamisch setzen
             document.getElementById(

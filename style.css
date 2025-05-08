@@ -20,7 +20,8 @@ a {
 header {
     background-color: #222;
     color: #fff;
-    padding: 15px 0;
+    padding: 25px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 header .container {
@@ -142,10 +143,19 @@ footer a:focus {
         text-align: center;
     }
 
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
     nav ul {
         flex-direction: column;
         gap: 10px;
-        margin-top: 10px;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px;
     }
 
     .hero h2 {
@@ -159,4 +169,75 @@ footer a:focus {
     .about {
         padding: 20px;
     }
+
+    .header-top {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-left: auto;
+}
+
+.social-links a {
+    margin-left: 10px;
+    color: #fff;
+    font-size: 2rem;
+    transition: color 0.3s;
+}
+
+.social-links a i {
+    transition: transform 0.2s ease;
+}
+
+.social-links a:hover i {
+    transform: scale(1.2);
+}
+
+.social-links a:hover i.fa-facebook {
+    color: #1877f2;
+}
+
+.social-links a:hover i.fa-youtube {
+    color: #ff0000;
+}
+
+.social-links a:hover i.fa-instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.social-links i {
+    vertical-align: middle;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.band-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.band-member {
+    max-width: 300px;
+}
+.band-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
 }
