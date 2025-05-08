@@ -23,16 +23,28 @@
   "bandDescription": "Wir sind Interceptor",
   "members": [
     {
-      "name": "Max Mustermann",
-      "role": "Sänger & Gitarrist",
+      "name": "Robert",
+      "role": "Bass",
       "image": "images/stockbild.png",
-      "bio": "Max ist das Herz der Band. Seit 2018 mit dabei und bekannt für seine energiegeladene Bühnenpräsenz."
+      "bio": "Beschreibung für Robert"
     },
     {
-      "name": "Lisa Musterfrau",
-      "role": "Schlagzeugerin",
+      "name": "Rafter",
+      "role": "Gesang & Gitarre",
       "image": "images/stockbild.png",
-      "bio": "Lisa bringt den Beat. Ihre Leidenschaft für Rhythmus treibt unsere Songs nach vorne."
+      "bio": "Beschreibung für Rafter"
+    },
+    {
+      "name": "Cheeky",
+      "role": "Gesang & Gitarre",
+      "image": "images/stockbild.png",
+      "bio": "Beschreibung für Cheeky"
+    },
+    {
+      "name": "Jasper",
+      "role": "Schlagzeug",
+      "image": "images/stockbild.png",
+      "bio": "Beschreibung für Jasper"
     }
   ],
   "media": {
