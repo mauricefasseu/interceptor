@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Interceptor - Über uns</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 id="header-title">Interceptor</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="band.html">Band</a></li>
+            <li><a href="media.html">Bilder/Videos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div id="band-content">
+        <h2 id="band-title"></h2>
+        <div id="band-text"></div>
+      </div>
+    </main>
+
+    <footer>
+      <p id="footer-text"></p>
+    </footer>
+
+    <script>
+      // Funktion zum Laden der JSON-Datei
+      fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+          // Header-Titel dynamisch setzen
+          document.getElementById('header-title').textContent = data.bandName;
+
+          // Bandinformationen dynamisch setzen
+          document.getElementById('band-title').textContent = `Über ${data.bandName}`;
+          document.getElementById('band-text').textContent = data.bandDescription;
+
+          // Footer dynamisch setzen
+          document.getElementById('footer-text').innerHTML = `&copy; ${data.footer.copyright} | <a href="${data.footer.impressumLink}">Impressum</a>`;
+        })
+        .catch(error => console.error('Fehler beim Laden der JSON-Datei:', error));
+    </script>
+  </body>
+</html>

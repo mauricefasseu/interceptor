@@ -1,0 +1,54 @@
+{
+  "bandName": "Interceptor",
+  "events": [
+    {
+      "title": "Konzert 1",
+      "date": "01.01.2025",
+      "location": "Tiefenbach",
+      "description": "Beschreibung vom Konzert"
+    },
+    {
+      "title": "Konzert 2",
+      "date": "02.02.2025",
+      "location": "Odenheim",
+      "description": "Beschreibung vom Konzert"
+    },
+    {
+      "title": "Konzert 3",
+      "date": "03.03.2025",
+      "location": "Östringen",
+      "description": "Beschreibung vom Konzert"
+    }
+  ],
+  "bandDescription": "Wir sind Interceptor",
+  "media": {
+    "images": [
+      {
+        "src": "images/image1.jpg",
+        "alt": "Konzert 1"
+      },
+      {
+        "src": "images/image2.jpg",
+        "alt": "Konzert 2"
+      }
+    ],
+    "videos": [
+      {
+        "src": "https://www.youtube.com/embed/abc123",
+        "title": "Live Performance 1"
+      },
+      {
+        "src": "https://www.youtube.com/embed/def456",
+        "title": "Live Performance 2"
+      }
+    ]
+  },
+  "impressum": {
+    "title": "Impressum",
+    "description": "Die Website wurde von der Band Interceptor erstellt. Alle Rechte vorbehalten. Weitere Informationen finden Sie hier."
+  },
+  "footer": {
+    "copyright": "2025 Interceptor",
+    "impressumLink": "impressum.html"
+  }
+}

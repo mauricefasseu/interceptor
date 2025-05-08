@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interceptor - Startseite</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 id="band-name"></h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="band.html">Band</a></li>
+            <li><a href="media.html">Bilder/Videos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h2>
+          Willkommen auf der offiziellen Website von
+          <span id="band-name-dynamic"></span>!
+        </h2>
+        <p>
+          Erfahre alles über unsere Musik, kommende Auftritte und vieles mehr.
+        </p>
+      </section>
+
+      <section class="about">
+        <h3>Über uns</h3>
+        <p id="about-text"></p>
+      </section>
+    </main>
+
+    <footer>
+      <p id="footer-text"></p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("data.json")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Netzwerkantwort war nicht ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Bandname und dynamische Elemente setzen
+            document.getElementById("band-name").textContent = data.bandName;
+            document.getElementById("band-name-dynamic").textContent =
+              data.bandName;
+            document.getElementById(
+              "about-text"
+            ).textContent = `Wir sind eine leidenschaftliche Band aus ${data.city}. Unsere Musik vereint ${data.genre} und ${data.specialFeatures}.`;
+
+            // Events dynamisch auflisten
+            const eventsList = document.getElementById("events-list");
+            data.events.forEach((event) => {
+              const li = document.createElement("li");
+              li.innerHTML = `<strong>${event.title}</strong><br>${event.date}<br>${event.location}`;
+              eventsList.appendChild(li);
+            });
+
+            // Footer dynamisch setzen
+            document.getElementById(
+              "footer-text"
+            ).innerHTML = `&copy; ${data.footer.copyright} | <a href="${data.footer.impressumLink}">Impressum</a>`;
+          })
+          .catch((error) => {
+            console.error("Fehler beim Laden der JSON-Datei:", error);
+            // Optional: Fehlermeldung oder Fallback-Inhalt anzeigen
+          });
+      });
+    </script>
+  </body>
+</html>

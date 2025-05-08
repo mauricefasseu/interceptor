@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Interceptor - Bilder & Videos</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 id="header-title">Interceptor</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="band.html">Band</a></li>
+            <li><a href="media.html">Bilder/Videos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <h2>Bilder & Videos</h2>
+      <p>Ein paar Eindrücke von unseren Konzerten:</p>
+
+      <div id="media-images">
+        <!-- Dynamische Bilder werden hier eingefügt -->
+      </div>
+
+      <h3>Videos</h3>
+      <div id="media-videos">
+        <!-- Dynamische Videos werden hier eingefügt -->
+      </div>
+    </main>
+
+    <footer>
+      <p id="footer-text"></p>
+    </footer>
+
+    <script>
+      // Funktion zum Laden der JSON-Datei
+      fetch("data.json") // Wenn die JSON-Datei im 'data'-Ordner ist
+        .then((response) => response.json())
+        .then((data) => {
+          // Header-Titel dynamisch setzen
+          document.getElementById("header-title").textContent = data.bandName;
+
+          // Dynamische Bilder einfügen
+          const mediaImages = document.getElementById("media-images");
+          data.media.images.forEach((image) => {
+            const imgElement = document.createElement("img");
+            imgElement.src = image.src;
+            imgElement.alt = image.alt;
+            mediaImages.appendChild(imgElement);
+          });
+
+          // Dynamische Videos einfügen
+          const mediaVideos = document.getElementById("media-videos");
+          data.media.videos.forEach((video) => {
+            const iframeElement = document.createElement("iframe");
+            iframeElement.src = video.src;
+            iframeElement.title = video.title;
+            iframeElement.width = "560";
+            iframeElement.height = "315";
+            mediaVideos.appendChild(iframeElement);
+          });
+
+          // Footer dynamisch setzen
+          document.getElementById(
+            "footer-text"
+          ).innerHTML = `&copy; ${data.footer.copyright} | <a href="${data.footer.impressumLink}">Impressum</a>`;
+        })
+        .catch((error) =>
+          console.error("Fehler beim Laden der JSON-Datei:", error)
+        );
+    </script>
+  </body>
+</html>
