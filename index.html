@@ -9,60 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <style>
-      .hamburger-menu {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
-        margin-left: auto;
-      }
-
-      .hamburger-menu .bar {
-        width: 30px;
-        height: 4px;
-        background-color: #fff;
-        border-radius: 5px;
-      }
-
-      /* Navigation Style */
-      .nav-bar ul {
-        display: flex;
-        gap: 20px;
-        list-style-type: none;
-        margin: 0;
-      }
-
-      /* Mobile navigation */
-      @media (max-width: 768px) {
-        .nav-bar ul {
-          display: none;
-          flex-direction: column;
-          width: 100%;
-          padding: 20px;
-          background-color: #222;
-          position: absolute;
-          top: 70px;
-          left: 0;
-          right: 0;
-          z-index: 10;
-        }
-
-        .nav-bar ul li a {
-          padding: 15px;
-          text-align: center;
-          width: 100%;
-        }
-
-        .hamburger-menu {
-          display: flex;
-        }
-
-        .nav-bar.active ul {
-          display: flex;
-        }
-      }
-    </style>
+    <style></style>
   </head>
   <body>
     <header>
@@ -128,7 +75,11 @@
     </main>
 
     <footer>
-      <p id="footer-text"></p>
+      <p id="footer-text">
+        &copy; <span id="copyright-year"></span> |
+        <a id="impressum-link" href="#">Impressum</a> |
+        <a href="kontakt.html">Kontakt</a>
+      </p>
     </footer>
 
     <script>
@@ -155,9 +106,10 @@
             ).textContent = `Wir sind eine leidenschaftliche Band aus ${data.city}. Unsere Musik vereint ${data.genre} und ${data.specialFeatures}.`;
 
             // Footer dynamisch setzen
-            document.getElementById(
-              "footer-text"
-            ).innerHTML = `&copy; ${data.footer.copyright} | <a href="${data.footer.impressumLink}">Impressum</a>`;
+            document.getElementById("copyright-year").textContent =
+              data.footer.copyright;
+            document.getElementById("impressum-link").href =
+              data.footer.impressumLink;
           })
           .catch((error) => {
             console.error("Fehler beim Laden der JSON-Datei:", error);

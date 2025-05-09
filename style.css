@@ -241,3 +241,65 @@ footer a:focus {
     height: auto;
     border-radius: 0.5rem;
 }
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    margin-left: auto;
+  }
+
+  .hamburger-menu .bar {
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  /* Navigation Style */
+  .nav-bar ul {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    margin: 0;
+  }
+
+  /* Mobile navigation */
+  @media (max-width: 768px) {
+    .nav-bar ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      padding: 20px;
+      background-color: #222;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    .nav-bar ul li a {
+      padding: 15px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .hamburger-menu {
+      display: flex;
+    }
+
+    .nav-bar.active ul {
+      display: flex;
+    }
+  }
+
+  .kontakt-heading {
+    text-align: left;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left:  2rem;
+    color: #ffffff;
+  }
